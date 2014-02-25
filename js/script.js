@@ -11,9 +11,10 @@ var boundingBoxHeight = innerScreenHeight - screenPadding * 6;
 var xGrid = 40;
 var yGrid = 30;
 var timeStep = 1000;
+var svg;
 
 jQuery(function () {
-    var svg = d3.select('#canvas')
+    svg = d3.select('#canvas')
         .append('svg:svg')
         .attr('width', width)
         .attr('height', height);
