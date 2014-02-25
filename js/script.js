@@ -10,6 +10,7 @@ var boundingBoxWidth = innerScreenWidth - screenPadding * 6;
 var boundingBoxHeight = innerScreenHeight - screenPadding * 6;
 var xGrid = 40;
 var yGrid = 30;
+var timeStep = 1000;
 
 jQuery(function () {
     var svg = d3.select('#canvas')
@@ -63,7 +64,29 @@ jQuery(function () {
         .duration(1000)
         .attr('r', 100)
         .style('stroke-width', 5);
+
+    step(1);
 });
+
+function step(stepNum) {
+    window.setTimeout(function () {
+        for(var x = 0; x < grid.x; x++) {
+            for(var y = 0; y < grid.y; y++) {
+                var screen = screens[x][y];
+                var newPos = routes[x][y][stepNum];
+                screen.markerX = newPos.x;
+                screen.markerY = newPos.y;
+                screen.marker.transition()
+                    .attr('cx', getXFromGrid(screen, screen.markerX))
+                    .attr('cy', getYFromGrid(screen, screen.markerY));
+            }
+        }
+        if (stepNum < iterations) {
+            step(stepNum + 1);
+        }
+        
+    },timeStep);
+}
 
 function getXFromGrid(screen, x) {
     return x / xGrid * innerScreenWidth + screen.x + screenPadding;

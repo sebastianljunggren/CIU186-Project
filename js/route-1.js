@@ -1,5 +1,6 @@
 var grid = {x: 3, y: 2};
 var routes = new Array();
+var iterations = 9;
 for(var x = 0; x < grid.x; x++) {
     routes[x] = new Array();
 }
