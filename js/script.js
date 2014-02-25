@@ -1,13 +1,17 @@
+var width = jQuery(window).width();
+var height = jQuery(window).height();
+var screens = new Array();
+var screenPadding = 35;
+var screenWidth = width / grid.x;
+var screenHeight = height / grid.y;
+var innerScreenWidth = screenWidth- screenPadding * 2;
+var innerScreenHeight = screenHeight -screenPadding * 2;
+var boundingBoxWidth = innerScreenWidth - screenPadding * 6;
+var boundingBoxHeight = innerScreenHeight - screenPadding * 6;
+var xGrid = 40;
+var yGrid = 30;
+
 jQuery(function () {
-    var width = jQuery(window).width();
-    var height = jQuery(window).height();
-    var grid = {x: 3, y: 2};
-    var screens = new Array();
-    var screenPadding = 35;
-    var innerScreenWidth = width / grid.x - screenPadding * 2;
-    var innerScreenHeight = height / grid.y -screenPadding * 2;
-    var boundingBoxWidth = innerScreenWidth - screenPadding * 6;
-    var boundingBoxHeight = innerScreenHeight - screenPadding * 6;
     var svg = d3.select('#canvas')
         .append('svg:svg')
         .attr('width', width)
@@ -21,6 +25,8 @@ jQuery(function () {
             screens[x][y] = {
                 x: x * width / grid.x,
                 y: y * height / grid.y,
+                markerX: routes[x][y][0].x,
+                markerY: routes[x][y][0].y,
             };
             svg.append('rect')
                 .attr('x', screens[x][y].x + screenPadding)
@@ -29,14 +35,21 @@ jQuery(function () {
                 .attr('height', innerScreenHeight)
                 .style('fill', 'white');
             svg.append('rect')
-                .attr('x', screens[x][y].x + screenPadding * 4)
-                .attr('y', screens[x][y].y + screenPadding * 4)
-                .attr('width', boundingBoxWidth)
-                .attr('height', boundingBoxHeight)
+                .attr('x', getXFromGrid(screens[x][y], 10))
+                .attr('y', getYFromGrid(screens[x][y], 5))
+                .attr('width', getXWidthFromGrid(screens[x][y], 20))
+                .attr('height', getYHeightFromGrid(screens[x][y], 20))
                 .style('fill', 'transparent')
                 .style('stroke', 'red')
                 .style('stroke-width', 3)
                 .style('stroke-dasharray', '10,5');
+            screens[x][y].marker = svg.append('circle')
+                .attr('cx', getXFromGrid(screens[x][y], screens[x][y].markerX))
+                .attr('cy', getYFromGrid(screens[x][y], screens[x][y].markerY))
+                .attr('r', 20)
+                .style('fill', 'red')
+                .style('stroke', 'black')
+                .style('stroke-width', 3);
         }
     }
     var circle = svg.append('circle')
@@ -51,3 +64,19 @@ jQuery(function () {
         .attr('r', 100)
         .style('stroke-width', 5);
 });
+
+function getXFromGrid(screen, x) {
+    return x / xGrid * innerScreenWidth + screen.x + screenPadding;
+}
+
+function getYFromGrid(screen, y) {
+    return y / yGrid * innerScreenHeight + screen.y + screenPadding;
+}
+
+function getXWidthFromGrid(screen, x) {
+    return x / xGrid * innerScreenWidth;
+}
+
+function getYHeightFromGrid(screen, y) {
+    return y / yGrid * innerScreenHeight;
+}
