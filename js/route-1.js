@@ -1,6 +1,8 @@
 var grid = {x: 3, y: 2};
 var routes = new Array();
 var iterations = 9;
+var startAnimatingStep = 4;
+var animatedScreen = {x: 2, y: 1};
 for(var x = 0; x < grid.x; x++) {
     routes[x] = new Array();
 }

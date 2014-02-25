@@ -81,6 +81,9 @@ function step(stepNum) {
                     .attr('cy', getYFromGrid(screen, screen.markerY));
             }
         }
+        if (stepNum == startAnimatingStep) {
+            animate(screens[animatedScreen.x][animatedScreen.y]);
+        }
         if (stepNum < iterations) {
             step(stepNum + 1);
         }
