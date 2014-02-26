@@ -13,6 +13,7 @@ var xGrid = 40;
 var yGrid = 30;
 var timeStep = 1000;
 var svg;
+var animating = false;
 
 jQuery(function () {
     svg = d3.select('#canvas')
@@ -32,7 +33,7 @@ jQuery(function () {
                 markerY: routes[x][y][0].y,
             }
             var screen = screens[x][y];
-            svg.append('rect')
+            screen.background = svg.append('rect')
                 .attr('x', screen.x + screenPadding)
                 .attr('y', screen.y + screenPadding)
                 .attr('width', innerScreenWidth)
@@ -46,7 +47,8 @@ jQuery(function () {
                 .style('fill', 'transparent')
                 .style('stroke', 'gray')
                 .style('stroke-width', 3)
-                .style('stroke-dasharray', '10,5');
+                .style('stroke-dasharray', '10,5')
+                .style('pointer-events', 'none');
             screen.markerGroup = svg.append('g')
                 .attr('transform', 'translate(' + getXFromGrid(screen, screen.markerX) + ',' + getYFromGrid(screen, screen.markerY) + ')');
             screen.marker = screen.markerGroup.append('circle')
@@ -55,7 +57,8 @@ jQuery(function () {
                 .attr('cy', 0)
                 .style('fill', 'green')
                 .style('stroke', 'black')
-                .style('stroke-width', 3);
+                .style('stroke-width', 3)
+                .style('pointer-events', 'none');
         }
     }
     step(1);
@@ -74,7 +77,15 @@ function step(stepNum) {
             }
         }
         if (stepNum == startAnimatingStep) {
-            animate(screens[animatedScreen.x][animatedScreen.y]);
+            animating = true;
+            var start = new Date().getTime();
+            var screen = screens[animatedScreen.x][animatedScreen.y];
+            screen.background.on('click', function() {
+                var end = new Date().getTime();
+                animating = false;
+                alert('Reaction time: ' + (end - start) + ' ms.');
+            });
+            animate(screen);
         }
         if (stepNum < iterations) {
             step(stepNum + 1);

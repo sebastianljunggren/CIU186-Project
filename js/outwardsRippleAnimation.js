@@ -4,7 +4,8 @@ function animate(screen) {
         .style('fill', 'transparent')
         .style('stroke', 'black')
         .style('stroke-width', 3)
-        .style('opacity', 0.2);
+        .style('opacity', 0.2)
+        .style('pointer-events', 'none');
     circle.transition()
         .duration(1000)
         .attr('r', width)
@@ -12,8 +13,10 @@ function animate(screen) {
         .style('opacity', 0.01)
         .duration(7500)
         .remove();
-    setTimeout(function() {
-        animate(screen);
-    }, 1000)
+    if (animating) {
+        setTimeout(function() {
+            animate(screen);
+        }, 1000)
+    }
 
 }
