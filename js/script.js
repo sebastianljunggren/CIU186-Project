@@ -3,11 +3,12 @@ var height = jQuery(window).height();
 var screens = new Array();
 var screenPadding = 35;
 var screenWidth = width / grid.x;
-var screenHeight = height / grid.y;
+var screenHeight = screenWidth * 3 / 4;
 var innerScreenWidth = screenWidth- screenPadding * 2;
 var innerScreenHeight = screenHeight -screenPadding * 2;
 var boundingBoxWidth = innerScreenWidth - screenPadding * 6;
 var boundingBoxHeight = innerScreenHeight - screenPadding * 6;
+var topSpace = height - screenHeight * grid.y;
 var xGrid = 40;
 var yGrid = 30;
 var timeStep = 1000;
@@ -26,7 +27,7 @@ jQuery(function () {
         for(var y = 0; y < grid.y; y++) {
             screens[x][y] = {
                 x: x * width / grid.x,
-                y: y * height / grid.y,
+                y: y * screenHeight + topSpace,
                 markerX: routes[x][y][0].x,
                 markerY: routes[x][y][0].y,
             }
