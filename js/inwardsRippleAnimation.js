@@ -1,7 +1,5 @@
 function animate(screen) {
-    var circle = svg.append('circle')
-        .attr('cx', screen.marker.attr('cx'))
-        .attr('cy', screen.marker.attr('cy'))
+    var circle = screen.markerGroup.append('circle')
         .attr('r', width)
         .style('fill', 'transparent')
         .style('stroke', 'black')
@@ -9,10 +7,10 @@ function animate(screen) {
         .style('opacity', 0.01);
     circle.transition()
         .duration(1000)
-        .attr('r', 50)
-        .style('stroke-width', 5)
-        .style('opacity', 0.3)
-        .duration(5000)
+        .attr('r', 25)
+        .style('stroke-width', 3)
+        .style('opacity', 0.2)
+        .duration(7500)
         .remove();
     setTimeout(function() {
         animate(screen);
