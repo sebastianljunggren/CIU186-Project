@@ -87,7 +87,7 @@ function step(stepNum) {
             });
             animate(screen);
         }
-        if (stepNum < iterations) {
+        if (stepNum + 1 < iterations) {
             step(stepNum + 1);
         }
         
