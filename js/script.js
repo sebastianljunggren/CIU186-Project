@@ -11,7 +11,7 @@ var boundingBoxHeight = innerScreenHeight - screenPadding * 6;
 var topSpace = height - screenHeight * grid.y;
 var xGrid = 40;
 var yGrid = 30;
-var timeStep = 1000;
+var timeStep = 500;
 var svg;
 var animating = false;
 
