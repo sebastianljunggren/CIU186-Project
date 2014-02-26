@@ -1,7 +1,5 @@
 function animate(screen) {
-    var circle = svg.append('circle')
-        .attr('cx', screen.marker.attr('cx'))
-        .attr('cy', screen.marker.attr('cy'))
+    var circle = screen.markerGroup.append('circle')
         .attr('r', width)
         .style('fill', 'transparent')
         .style('stroke', 'black')
