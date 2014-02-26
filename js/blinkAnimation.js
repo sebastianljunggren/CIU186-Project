@@ -9,10 +9,10 @@ function animate(screen) {
 
 function blink(marker, status) {
 	if (status) {
-		marker.style('fill', "red");
+		marker.transition().style('fill', "red");
 	}
 	else {
-		marker.style('fill', "green");
+		marker.transition().style('fill', "gray");
 	}
 
 
