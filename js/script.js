@@ -50,7 +50,7 @@ jQuery(function () {
             screen.markerGroup = svg.append('g')
                 .attr('transform', 'translate(' + getXFromGrid(screen, screen.markerX) + ',' + getYFromGrid(screen, screen.markerY) + ')');
             screen.marker = screen.markerGroup.append('circle')
-                .attr('r', 20)
+                .attr('r', 15)
                 .attr('cx', 0)
                 .attr('cy', 0)
                 .style('fill', 'green')

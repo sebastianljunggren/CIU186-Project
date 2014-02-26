@@ -7,7 +7,7 @@ function animate(screen) {
         .style('opacity', 0.01);
     circle.transition()
         .duration(1000)
-        .attr('r', 25)
+        .attr('r', 15)
         .style('stroke-width', 3)
         .style('opacity', 0.2)
         .duration(7500)

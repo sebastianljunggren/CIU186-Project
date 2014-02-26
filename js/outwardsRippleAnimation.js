@@ -1,6 +1,6 @@
 function animate(screen) {
     var circle = screen.markerGroup.append('circle')
-        .attr('r', 25)
+        .attr('r', 15)
         .style('fill', 'transparent')
         .style('stroke', 'black')
         .style('stroke-width', 3)
