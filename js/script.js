@@ -55,7 +55,7 @@ jQuery(function () {
                 .attr('r', 15)
                 .attr('cx', 0)
                 .attr('cy', 0)
-                .style('fill', 'green')
+                .style('fill', '#33CC33')
                 .style('stroke', 'black')
                 .style('stroke-width', 3)
                 .style('pointer-events', 'none');
@@ -72,8 +72,7 @@ function step(stepNum) {
                 var newPos = routes[x][y][stepNum];
                 screen.markerX = newPos.x;
                 screen.markerY = newPos.y;
-                screen.markerGroup.transition()
-                    .attr('transform', 'translate(' + getXFromGrid(screen, screen.markerX) + ',' + getYFromGrid(screen, screen.markerY) + ')');
+                screen.markerGroup.attr('transform', 'translate(' + getXFromGrid(screen, screen.markerX) + ',' + getYFromGrid(screen, screen.markerY) + ')');
             }
         }
         if (stepNum == startAnimatingStep) {
