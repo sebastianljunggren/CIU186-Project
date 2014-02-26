@@ -29,5 +29,13 @@
 
     // Left to outside left 1
 
+    // Right to outside right 1
+
     // Outside left to outside left 1 
+
+    // Outside right to outside right  2 
+
+    // Middle to outside right 1
+
+    // Middle to outside left 1
 ];
