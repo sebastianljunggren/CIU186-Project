@@ -7,10 +7,10 @@ function animate(screen) {
         .style('opacity', 0.01);
     circle.transition()
         .duration(1000)
-        .attr('r', 50)
-        .style('stroke-width', 5)
-        .style('opacity', 0.3)
-        .duration(5000)
+        .attr('r', 25)
+        .style('stroke-width', 3)
+        .style('opacity', 0.2)
+        .duration(7500)
         .remove();
     setTimeout(function() {
         animate(screen);
