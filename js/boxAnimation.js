@@ -20,8 +20,8 @@ function animate(screen) {
             //var cy = screen.markerGroup.attr('transform').translate.y;
             box.transition()
             	.duration(1000)
-            	.attr('x', cx)
-            	.attr('y', cy)
+            	.attr('x', cx - boxSize / 2)
+            	.attr('y', cy - boxSize / 2)
             	.remove();
          }
 	}
