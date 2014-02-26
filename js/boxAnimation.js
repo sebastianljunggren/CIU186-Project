@@ -15,12 +15,13 @@ function animate(screen) {
                 .style('fill', 'black')
                 .style('opacity', 0.8);
 
-            var cx = screen.marker.attr('cx');
-            var cy = screen.marker.attr('cy');
+            var cx = getXFromGrid(screen, screen.markerX);
+            var cy = getYFromGrid(screen, screen.markerY);
+            //var cy = screen.markerGroup.attr('transform').translate.y;
             box.transition()
             	.duration(1000)
-            	.attr('x', cx - boxSize / 2)
-            	.attr('y', cy - boxSize / 2)
+            	.attr('x', cx)
+            	.attr('y', cy)
             	.remove();
          }
 	}
