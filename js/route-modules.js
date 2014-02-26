@@ -35,7 +35,29 @@
 
     // Outside right to outside right  2 
 
-    // Middle to outside right 1
-
     // Middle to outside left 1
+    // 20, 15 to 8, 11
+    {x: 20, y: 15},
+    {x: 25, y: 16},
+    {x: 21, y: 17},
+    {x: 22, y: 18},
+    {x: 22, y: 19},
+    {x: 22, y: 19},
+    {x: 20, y: 15},
+    {x: 20, y: 15},
+    {x: 15, y: 12},
+    {x: 8, y: 11},
+
+    // Middle to outside right 1
+    // 20, 15 to 35, 18
+    {x: 20, y: 15},
+    {x: 25, y: 13},
+    {x: 21, y: 10},
+    {x: 19, y: 10},
+    {x: 15, y: 12},
+    {x: 20, y: 18},
+    {x: 21, y: 18},
+    {x: 19, y: 11},
+    {x: 25, y: 21},
+    {x: 35, y:18},
 ];
