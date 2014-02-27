@@ -14,9 +14,12 @@ function blink(marker, status) {
 	else {
 		marker.transition().style('fill', "gray");
 	}
-
-
-	window.setTimeout(function () {
-        blink(marker, !status);
-    }, delay);
+	if (animating) {
+		window.setTimeout(function () {
+        	blink(marker, !status);
+    	}, delay);
+	} else {
+		// Restore to normal marker color
+		marker.transition().style('fill', '#33CC33');
+	}
 }

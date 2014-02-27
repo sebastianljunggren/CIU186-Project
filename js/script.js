@@ -19,7 +19,8 @@ jQuery(function () {
     svg = d3.select('#canvas')
         .append('svg:svg')
         .attr('width', width)
-        .attr('height', height);
+        .attr('height', height)
+        .style('cursor', 'none');
     svg.append('rect')
         .attr('width', width)
         .attr('height', height);
@@ -38,7 +39,8 @@ jQuery(function () {
                 .attr('y', screen.y + screenPadding)
                 .attr('width', innerScreenWidth)
                 .attr('height', innerScreenHeight)
-                .style('fill', 'white');
+                .style('fill', 'white')
+                .style('cursor', 'default');
             svg.append('rect')
                 .attr('x', getXFromGrid(screen, 10))
                 .attr('y', getYFromGrid(screen, 5))
@@ -79,6 +81,7 @@ function step(stepNum) {
             animating = true;
             var start = new Date().getTime();
             var screen = screens[animatedScreen.x][animatedScreen.y];
+            screen.background.style('cursor', 'pointer');
             screen.background.on('click', function() {
                 var end = new Date().getTime();
                 animating = false;
